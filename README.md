@@ -23,7 +23,7 @@ nmake
 ````
 ## Usage
 
-Create an object of type picoSSOLED. On this object one can execute the methods decsribed below. 
+Create an object of type picoSSOLED. On this object one can execute the methods described below. 
 
 The C++ is basically a simple wrapper around the C library of Larry Bank. Code concerning bit banging is stripped and replaced by the i2c facilities of pi Pico. 
  
