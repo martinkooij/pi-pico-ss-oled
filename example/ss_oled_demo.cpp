@@ -35,8 +35,8 @@ picoSSOLED myOled(OLED_128x64, 0x3c, 0, 0, PICO_UART, SDA_PIN, SCL_PIN, I2C_SPEE
     myOled.write_string(0,8,2,(char *)"running on the", FONT_8x8, 0, 1);
     myOled.write_string(0,8,3,(char *)"SSD1306 128x64", FONT_8x8, 0, 1);
     myOled.write_string(0,4,4,(char *)"monochrome OLED", FONT_8x8, 0, 1);
-    myOled.write_string(0,4,5,(char *)"Written By L BANK", FONT_8x8, 0, 1);
-    myOled.write_string(0,8,6,(char *)"Pico by M KOOIJ", FONT_8x8, 0, 1);
+    myOled.write_string(0,0,5,(char *)"Written by L BANK", FONT_8x8, 0, 1);
+    myOled.write_string(0,4,6,(char *)"Pico by M KOOIJ", FONT_8x8, 0, 1);
     myOled.write_string(0,0,7,(char *)"**************** ", FONT_8x8, 0, 1);
     sleep_ms(5000);
   }
