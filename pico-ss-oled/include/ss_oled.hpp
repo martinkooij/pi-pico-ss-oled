@@ -16,12 +16,12 @@ int32_t speed ;
 public:
 //constructor
 
-picoSSOLED(int iType, int iAddr, bool bFlip, bool bInvert, i2c_inst_t * pUART, int sda, int scl, int32_t iSpeed) {
+picoSSOLED(int iType, int iAddr, bool bFlip, bool bInvert, i2c_inst_t * pI2C, int sda, int scl, int32_t iSpeed) {
 	oled.oled_type = iType ;
 	oled.oled_addr = iAddr ;
 	oled.oled_flip = (int) bFlip ;
 	invert = bInvert ;
-    oled.bbi2c.picoUART = pUART;
+    oled.bbi2c.picoI2C = pI2C;
     oled.bbi2c.iSDA = sda ;
     oled.bbi2c.iSCL = scl ;
 	speed = iSpeed ;

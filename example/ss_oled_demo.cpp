@@ -5,7 +5,7 @@
 // RPI Pico
 #define SDA_PIN 4
 #define SCL_PIN 5
-#define PICO_UART i2c0
+#define PICO_I2C i2c0
 #define I2C_SPEED 100 * 1000
 
 
@@ -19,7 +19,7 @@ static uint8_t ucBuffer[1024];
 uint8_t uc[8];
 int i, j, rc;
 char szTemp[32];
-picoSSOLED myOled(OLED_128x64, 0x3c, 0, 0, PICO_UART, SDA_PIN, SCL_PIN, I2C_SPEED);
+picoSSOLED myOled(OLED_128x64, 0x3c, 0, 0, PICO_I2C, SDA_PIN, SCL_PIN, I2C_SPEED);
     
   rc = myOled.init() ;
   myOled.set_back_buffer(ucBuffer);

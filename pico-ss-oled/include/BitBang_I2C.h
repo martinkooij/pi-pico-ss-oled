@@ -67,7 +67,7 @@ enum {
 typedef struct mybbi2c
 {
 uint8_t iSDA, iSCL; // pin numbers (0xff = disabled)
-i2c_inst_t * picoUART; // used  pico uart
+i2c_inst_t * picoI2C; // used  pico I2C
 } BBI2C;
 
 #ifdef __cplusplus

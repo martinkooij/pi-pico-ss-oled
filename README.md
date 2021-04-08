@@ -39,7 +39,7 @@ private:
 public:
 
 //constructor
-picoSSOLED(int iType, int iAddr, bool bFlip, bool bInvert, i2c_inst_t * pUART, int sda, int scl, int32_t iSpeed) {
+picoSSOLED(int iType, int iAddr, bool bFlip, bool bInvert, i2c_inst_t * pI2C, int sda, int scl, int32_t iSpeed) {
 	
 //methods
 

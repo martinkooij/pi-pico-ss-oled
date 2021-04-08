@@ -38,9 +38,9 @@
 void I2CInit(BBI2C *pI2C, uint32_t iClock)
 {
 	if (pI2C == NULL) return;
-	if ((pI2C->iSDA + 2 * i2c_hw_index(pI2C->picoUART))%4 != 0) return ;
-	if ((pI2C->iSCL + 3 + 2 * i2c_hw_index(pI2C->picoUART))%4 != 0) return ;
-      i2c_init(pI2C->picoUART, iClock);
+	if ((pI2C->iSDA + 2 * i2c_hw_index(pI2C->picoI2C))%4 != 0) return ;
+	if ((pI2C->iSCL + 3 + 2 * i2c_hw_index(pI2C->picoI2C))%4 != 0) return ;
+      i2c_init(pI2C->picoI2C, iClock);
       gpio_set_function(pI2C->iSDA, GPIO_FUNC_I2C);
       gpio_set_function(pI2C->iSCL, GPIO_FUNC_I2C);
       gpio_pull_up(pI2C->iSDA);
@@ -55,7 +55,7 @@ uint8_t I2CTest(BBI2C *pI2C, uint8_t addr)
 {
 	int ret;
     uint8_t rxdata;
-    ret = i2c_read_blocking(pI2C->picoUART, addr, &rxdata, 1, false);
+    ret = i2c_read_blocking(pI2C->picoI2C, addr, &rxdata, 1, false);
     return (ret >= 0);
 } /* I2CTest() */
 
@@ -88,7 +88,7 @@ int I2CWrite(BBI2C *pI2C, uint8_t iAddr, uint8_t *pData, int iLen)
 {
 	int rc = 0;
 
-    rc = i2c_write_blocking(pI2C->picoUART, iAddr, pData, iLen, true); // true to keep master control of bus
+    rc = i2c_write_blocking(pI2C->picoI2C, iAddr, pData, iLen, true); // true to keep master control of bus
     return rc >= 0 ? iLen : 0;
 
 
@@ -101,9 +101,9 @@ int I2CReadRegister(BBI2C *pI2C, uint8_t iAddr, uint8_t u8Register, uint8_t *pDa
 {
 	int rc;
   
-    rc = i2c_write_blocking(pI2C->picoUART, iAddr, &u8Register, 1, true); // true to keep master control of bus 
+    rc = i2c_write_blocking(pI2C->picoI2C, iAddr, &u8Register, 1, true); // true to keep master control of bus 
     if (rc >= 0) {
-        rc = i2c_read_blocking(pI2C->picoUART, iAddr, pData, iLen, false);
+        rc = i2c_read_blocking(pI2C->picoI2C, iAddr, pData, iLen, false);
     }
     return (rc >= 0);
 } /* I2CReadRegister() */
@@ -114,7 +114,7 @@ int I2CReadRegister(BBI2C *pI2C, uint8_t iAddr, uint8_t u8Register, uint8_t *pDa
 int I2CRead(BBI2C *pI2C, uint8_t iAddr, uint8_t *pData, int iLen)
 {
 	int rc;
-    rc = i2c_read_blocking(pI2C->picoUART, iAddr, pData, iLen, false);
+    rc = i2c_read_blocking(pI2C->picoI2C, iAddr, pData, iLen, false);
     return (rc >= 0);
 	
 } /* I2CRead() */
