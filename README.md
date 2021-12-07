@@ -192,4 +192,5 @@ void draw_rectangle(int x1, int y1, int x2, int y2, uint8_t ucColor, bool bFille
 
 
 ## Release notes
+7-Dec-2021: Added MIT licence
 7-April-2021: First Release. 
